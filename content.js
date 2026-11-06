@@ -1,4 +1,3 @@
-/* Conteúdo editável da Órbita Virtual. Só publique métricas e depoimentos reais. */
 window.ORBITA = {
   "whatsapp": "5587981345302",
   "instagram": "",
@@ -71,7 +70,7 @@ window.ORBITA = {
       "category": "Audiovisual",
       "type": "Conteúdo e produção audiovisual",
       "description": "Conteúdo e produção audiovisual",
-      "image": "",
+      "image": "assets/clientes/sao-miguel.jpg",
       "initials": "SM",
       "theme": "royal"
     },
@@ -80,7 +79,7 @@ window.ORBITA = {
       "category": "Social Media",
       "type": "Conteúdo e comunicação para o varejo",
       "description": "Conteúdo e comunicação para o varejo",
-      "image": "",
+      "image": "assets/clientes/wanderley.png",
       "initials": "WC",
       "theme": "mono"
     },
@@ -137,6 +136,15 @@ window.ORBITA = {
       "image": "",
       "initials": "AM",
       "theme": "wood"
+    },
+    {
+      "client": "César Capitó Advogados",
+      "category": "Institucional",
+      "type": "Comunicação para serviços jurídicos",
+      "description": "",
+      "image": "",
+      "initials": "CC",
+      "theme": "green"
     }
   ],
   "clients": [
@@ -191,5 +199,9 @@ window.ORBITA = {
     }
   ],
   "metrics": [],
-  "testimonials": []
+  "testimonials": [],
+  "clientImages": {
+    "São Miguel Arcanjo": "assets/clientes/sao-miguel.jpg",
+    "Wanderley Calçados": "assets/clientes/wanderley.png"
+  }
 };
