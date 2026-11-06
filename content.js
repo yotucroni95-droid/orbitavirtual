@@ -79,7 +79,7 @@ window.ORBITA = {
       "category": "Social Media",
       "type": "Conteúdo e comunicação para o varejo",
       "description": "Conteúdo e comunicação para o varejo",
-      "image": "assets/clientes/wanderley.png",
+      "image": "assets/clientes/wanderley.jpg",
       "initials": "WC",
       "theme": "mono"
     },
@@ -88,7 +88,7 @@ window.ORBITA = {
       "category": "Design",
       "type": "Conteúdos visuais para o segmento agropecuário",
       "description": "Conteúdos visuais para o segmento agropecuário",
-      "image": "",
+      "image": "assets/clientes/a-cooperativa.jpg",
       "initials": "AC",
       "theme": "green"
     },
@@ -97,7 +97,7 @@ window.ORBITA = {
       "category": "Campanhas",
       "type": "Campanhas e peças promocionais",
       "description": "Campanhas e peças promocionais",
-      "image": "",
+      "image": "assets/clientes/nossa-senhora.jpg",
       "initials": "NS",
       "theme": "gold"
     },
@@ -106,7 +106,7 @@ window.ORBITA = {
       "category": "Campanhas",
       "type": "Comunicação para materiais de construção",
       "description": "Comunicação para materiais de construção",
-      "image": "",
+      "image": "assets/clientes/ld-construcao.jpg",
       "initials": "LD",
       "theme": "red"
     },
@@ -115,7 +115,7 @@ window.ORBITA = {
       "category": "Social Media",
       "type": "Conteúdo de moda e comunicação visual",
       "description": "Conteúdo de moda e comunicação visual",
-      "image": "",
+      "image": "assets/clientes/bianca-magazine.jpg",
       "initials": "BM",
       "theme": "rose"
     },
@@ -124,7 +124,7 @@ window.ORBITA = {
       "category": "Design",
       "type": "Artes para produtos e serviços",
       "description": "Artes para produtos e serviços",
-      "image": "",
+      "image": "assets/clientes/gugu-motos.jpg",
       "initials": "GM",
       "theme": "silver"
     },
@@ -133,7 +133,7 @@ window.ORBITA = {
       "category": "Social Media",
       "type": "Conteúdos para divulgação de produtos",
       "description": "Conteúdos para divulgação de produtos",
-      "image": "",
+      "image": "assets/clientes/angela-moveis.jpg",
       "initials": "AM",
       "theme": "wood"
     },
@@ -142,7 +142,7 @@ window.ORBITA = {
       "category": "Institucional",
       "type": "Comunicação para serviços jurídicos",
       "description": "",
-      "image": "",
+      "image": "assets/clientes/cesar-capito.jpg",
       "initials": "CC",
       "theme": "green"
     }
@@ -201,7 +201,14 @@ window.ORBITA = {
   "metrics": [],
   "testimonials": [],
   "clientImages": {
+    "Ângela Móveis": "assets/clientes/angela-moveis.jpg",
     "São Miguel Arcanjo": "assets/clientes/sao-miguel.jpg",
-    "Wanderley Calçados": "assets/clientes/wanderley.png"
+    "Wanderley Calçados": "assets/clientes/wanderley.jpg",
+    "Bianca Magazine": "assets/clientes/bianca-magazine.jpg",
+    "A Cooperativa": "assets/clientes/a-cooperativa.jpg",
+    "Gugu Motos": "assets/clientes/gugu-motos.jpg",
+    "Nossa Senhora da Conceição": "assets/clientes/nossa-senhora.jpg",
+    "LD Construção": "assets/clientes/ld-construcao.jpg",
+    "César Capitó Advogados": "assets/clientes/cesar-capito.jpg"
   }
 };
