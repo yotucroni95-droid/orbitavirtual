@@ -1,6 +1,6 @@
 /* App da Órbita Virtual: guarda o site no celular para abrir rápido e funcionar com internet fraca.
    Ao mudar arquivos do site, aumente a versão abaixo para o app baixar a novidade. */
-const VERSION = 'orbita-v2';
+const VERSION = 'orbitavirtual-20261113-icons2';
 const CORE = [
   './',
   'index.html',
@@ -18,7 +18,7 @@ self.addEventListener('install', e => {
 
 self.addEventListener('activate', e => {
   e.waitUntil(caches.keys()
-    .then(keys => Promise.all(keys.filter(k => k !== VERSION).map(k => caches.delete(k))))
+    .then(keys => Promise.all(keys.filter(k => (k.startsWith('orbitavirtual-') || /^orbita-v\d+$/.test(k)) && k !== VERSION).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 
