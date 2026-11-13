@@ -379,3 +379,24 @@ body.menu-open{overflow:hidden}
   .js .hero-title .line > span{transform:none}
   .marquee-track,.cta-track{animation:none}
 }
+
+/* ---------- app: aviso de instalação ---------- */
+.install{position:fixed;left:0;right:0;bottom:0;z-index:150;padding:0 12px calc(12px + env(safe-area-inset-bottom));pointer-events:none}
+.install-card{pointer-events:auto;position:relative;max-width:440px;margin:0 auto;padding:18px 18px 20px;border-radius:24px;background:rgba(10,20,48,.92);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);border:1px solid var(--line-2);box-shadow:0 30px 60px -20px rgba(0,0,0,.8);transform:translateY(130%);transition:transform .7s var(--ease-out)}
+.install.show .install-card{transform:none}
+.install-head{display:flex;align-items:center;gap:14px;padding-right:30px}
+.install-head img{width:56px;height:56px;border-radius:14px;flex:none;box-shadow:0 8px 20px -6px rgba(31,107,255,.6)}
+.install-head b{display:block;font:600 17px/1.2 var(--display);letter-spacing:-.02em;color:var(--ink)}
+.install-head small{display:block;margin-top:4px;font-size:13.5px;line-height:1.35;color:var(--muted)}
+.install-x{position:absolute;right:12px;top:10px;width:34px;height:34px;border-radius:50%;font-size:22px;line-height:1;color:var(--muted)}
+.install-x:hover{color:var(--ink);background:rgba(255,255,255,.06)}
+.install-body{margin-top:16px;display:grid;gap:10px}
+.install-body .btn{--h:50px}
+.install-steps{display:grid;gap:10px;counter-reset:s;margin:0;padding:0}
+.install-steps li{counter-increment:s;position:relative;padding:3px 0 0 38px;min-height:28px;font-size:15px;color:var(--ink-2);line-height:1.45}
+.install-steps li::before{content:counter(s);position:absolute;left:0;top:0;width:26px;height:26px;border-radius:50%;display:grid;place-items:center;background:var(--blue);color:#fff;font:600 13px var(--body)}
+.install-steps .key{display:inline-flex;align-items:center;justify-content:center;width:26px;height:26px;border-radius:7px;background:rgba(255,255,255,.1);vertical-align:middle;margin:0 2px}
+.install-steps .key svg{width:16px;height:16px}
+.install-note{font-size:12.5px;color:var(--muted);line-height:1.4}
+.install-ok{display:flex;align-items:center;gap:10px;font-size:15px;color:#3DDC97}
+.to-top{text-align:left}

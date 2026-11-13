@@ -18,15 +18,20 @@
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
+  <link rel="manifest" href="manifest.webmanifest">
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
-  <link rel="icon" type="image/png" href="assets/favicon.png">
-  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="64x64" href="assets/app/favicon-64.png">
+  <link rel="apple-touch-icon" href="assets/app/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Órbita">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Geist:wght@300..700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20261113-orbita3">
-  <script defer src="content.js?v=20261113-orbita3"></script>
-  <script defer src="script.js?v=20261113-orbita3"></script>
+  <link rel="stylesheet" href="styles.css?v=20261113-orbita6">
+  <script defer src="content.js?v=20261113-orbita6"></script>
+  <script defer src="script.js?v=20261113-orbita6"></script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"ProfessionalService","name":"Órbita Virtual","description":"Agência criativa de marketing, audiovisual, design e sites.","url":"https://yotucroni95-droid.github.io/orbitavirtual/","telephone":"+55 87 98134-5302","image":"https://yotucroni95-droid.github.io/orbitavirtual/assets/og-image.jpg","address":{"@type":"PostalAddress","addressLocality":"Lagoa do Ouro","addressRegion":"PE","addressCountry":"BR"}}
   </script>
@@ -88,6 +93,7 @@
       <a href="#proposta"><i>06</i>Proposta</a>
     </nav>
     <div class="menu-foot">
+      <button class="btn btn-ghost btn-block" type="button" data-install hidden><svg class="ico"><use href="#i-down"/></svg>Instalar o app</button>
       <a class="btn btn-primary btn-block" data-wa="Olá, Órbita! Vim pelo site e quero conversar sobre um projeto." href="#"><svg class="ico"><use href="#i-wa"/></svg>Falar no WhatsApp</a>
       <p class="mono" data-fill="location"></p>
     </div>
@@ -246,9 +252,21 @@
       <a href="#inicio" class="brand"><svg class="brand-mark"><use href="#logo"/></svg><span class="brand-name">Órbita<b>Virtual</b></span></a>
       <p class="mono">Marketing · Audiovisual · Design · Sites</p>
       <p class="foot-copy">© <span id="year"></span> Órbita Virtual. Todos os direitos reservados.</p>
+      <button type="button" class="to-top mono" data-install hidden>Instalar o app ↓</button>
       <a href="#inicio" class="to-top mono">Voltar ao topo ↑</a>
     </div>
   </footer>
+
+  <div class="install" id="install" role="dialog" aria-modal="false" aria-labelledby="install-title" hidden>
+    <div class="install-card">
+      <button class="install-x" type="button" aria-label="Fechar">×</button>
+      <div class="install-head">
+        <img src="assets/app/icon-192.png" alt="" width="56" height="56">
+        <div><b id="install-title">Leve a Órbita no seu celular</b><small>Ícone na tela inicial, abre em tela cheia e rápido.</small></div>
+      </div>
+      <div class="install-body" id="install-body"></div>
+    </div>
+  </div>
 
   <a class="wa-float" data-wa="Olá, Órbita! Vim pelo site." href="#" aria-label="Conversar no WhatsApp"><svg class="ico"><use href="#i-wa"/></svg><span>WhatsApp</span></a>
 </body>

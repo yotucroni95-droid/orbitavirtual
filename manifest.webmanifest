@@ -1,0 +1,24 @@
+{
+  "id": "/orbitavirtual/",
+  "name": "Órbita Virtual",
+  "short_name": "Órbita",
+  "description": "Marketing, audiovisual, design e sites para negócios que querem ser vistos e lembrados.",
+  "lang": "pt-BR",
+  "start_url": "/orbitavirtual/?app=1",
+  "scope": "/orbitavirtual/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#03081A",
+  "theme_color": "#03081A",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "assets/app/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/app/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Falar no WhatsApp", "short_name": "WhatsApp", "url": "https://wa.me/5587981345302?text=Ol%C3%A1%2C%20%C3%93rbita!%20Vim%20pelo%20app." },
+    { "name": "Montar proposta", "short_name": "Proposta", "url": "/orbitavirtual/?app=1#proposta" },
+    { "name": "Ver trabalhos", "short_name": "Trabalhos", "url": "/orbitavirtual/?app=1#trabalhos" }
+  ]
+}

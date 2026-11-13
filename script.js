@@ -346,3 +346,72 @@
     if (fine) hero.addEventListener('pointermove', e => { tx = e.clientX / innerWidth - .5; ty = e.clientY / innerHeight - .5; }, { passive: true });
   }
 })();
+
+/* ---------- App: instalação no celular + modo offline ---------- */
+(() => {
+  'use strict';
+  const $ = s => document.querySelector(s);
+  const $$ = s => [...document.querySelectorAll(s)];
+  const standalone = matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const ua = navigator.userAgent;
+  const isIOS = /iphone|ipad|ipod/i.test(ua) || (/Macintosh/.test(ua) && navigator.maxTouchPoints > 1);
+  const isAndroid = /android/i.test(ua);
+  const inApp = /Instagram|FBAN|FBAV|FB_IAB|Line\/|WhatsApp/i.test(ua);
+  const mobile = isIOS || isAndroid;
+  const forced = new URLSearchParams(location.search).has('instalar');
+  const store = {
+    get(k) { try { return localStorage.getItem(k); } catch (e) { return null; } },
+    set(k, v) { try { localStorage.setItem(k, v); } catch (e) { /* sem armazenamento */ } }
+  };
+
+  if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
+  if (standalone) { document.documentElement.classList.add('is-app'); return; }
+
+  const sheet = $('#install'), body = $('#install-body');
+  let deferred = null;
+  const shareIcon = '<span class="key"><svg viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M12 15V3m-4 4 4-4 4 4M6 11H5a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1v-8a1 1 0 0 0-1-1h-1"/></svg></span>';
+  const dotsIcon = '<span class="key"><svg viewBox="0 0 24 24"><circle cx="12" cy="5" r="1.8" fill="currentColor"/><circle cx="12" cy="12" r="1.8" fill="currentColor"/><circle cx="12" cy="19" r="1.8" fill="currentColor"/></svg></span>';
+
+  const render = () => {
+    if (deferred) {
+      body.innerHTML = '<button class="btn btn-primary btn-block" type="button" id="do-install"><svg class="ico"><use href="#i-down"/></svg><span>Instalar agora</span></button><p class="install-note">Grátis e leve: ocupa menos espaço que uma foto.</p>';
+      $('#do-install').addEventListener('click', async () => {
+        deferred.prompt();
+        const choice = await deferred.userChoice;
+        deferred = null;
+        if (choice.outcome === 'accepted') { body.innerHTML = '<p class="install-ok">✓ Pronto! O app da Órbita está na sua tela inicial.</p>'; setTimeout(hide, 2600); }
+        else render();
+      });
+    } else if (isIOS) {
+      body.innerHTML = (inApp ? '<p class="install-note">Abra este link no <b>Safari</b> para instalar: toque em ••• e escolha “Abrir no navegador”.</p>' : '') +
+        '<ol class="install-steps"><li>Toque em ' + shareIcon + ' <b>Compartilhar</b>, na barra do Safari</li><li>Role e toque em <b>“Adicionar à Tela de Início”</b></li><li>Toque em <b>“Adicionar”</b>, no canto de cima</li></ol>';
+    } else if (isAndroid) {
+      body.innerHTML = (inApp ? '<p class="install-note">Abra este link no <b>Chrome</b> para instalar: toque em ⋮ e escolha “Abrir no Chrome”.</p>' : '') +
+        '<ol class="install-steps"><li>Toque no menu ' + dotsIcon + ' do navegador</li><li>Toque em <b>“Instalar app”</b> ou <b>“Adicionar à tela inicial”</b></li><li>Confirme em <b>“Instalar”</b></li></ol>';
+    } else {
+      body.innerHTML = '<p class="install-note">No computador, clique no ícone de instalar na barra de endereço do Chrome ou do Edge. No celular, abra este mesmo link para instalar.</p>';
+    }
+  };
+  const show = () => { render(); sheet.hidden = false; setTimeout(() => sheet.classList.add('show'), 40); };
+  const hide = () => { sheet.classList.remove('show'); setTimeout(() => { sheet.hidden = true; }, 700); };
+  $('.install-x').addEventListener('click', () => { hide(); store.set('orbita-install-dismissed', String(Date.now())); });
+
+  const showButtons = () => $$('[data-install]').forEach(b => { b.hidden = false; });
+  $$('[data-install]').forEach(b => b.addEventListener('click', () => {
+    const menuBtn = $('.menu-btn');
+    if (menuBtn && menuBtn.getAttribute('aria-expanded') === 'true') menuBtn.click();
+    show();
+  }));
+  if (mobile || forced) showButtons();
+
+  addEventListener('beforeinstallprompt', e => {
+    e.preventDefault(); deferred = e; showButtons();
+    if (!sheet.hidden) render();
+  });
+  addEventListener('appinstalled', () => { deferred = null; $$('[data-install]').forEach(b => { b.hidden = true; }); });
+
+  const dismissed = +store.get('orbita-install-dismissed') || 0;
+  const recently = Date.now() - dismissed < 3 * 24 * 3600 * 1000;
+  if (forced) setTimeout(show, 700);
+  else if (mobile && !recently) setTimeout(show, 6000);
+})();
