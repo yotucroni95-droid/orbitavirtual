@@ -339,7 +339,17 @@
   let raf = 0;
   const frame = t => { draw(t); raf = visible && !reduce ? requestAnimationFrame(frame) : 0; };
   resize(); draw(0);
-  addEventListener('resize', () => { resize(); draw(performance.now()); });
+  let lastW = 0, lastH = 0;
+  const refit = () => {
+    const r = cv.getBoundingClientRect();
+    if (Math.abs(r.width - lastW) < 1 && Math.abs(r.height - lastH) < 1) return;
+    lastW = r.width; lastH = r.height; resize(); draw(performance.now());
+  };
+  if ('ResizeObserver' in window) new ResizeObserver(refit).observe(cv);
+  addEventListener('resize', refit);
+  addEventListener('orientationchange', () => setTimeout(refit, 250));
+  addEventListener('load', refit);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(refit);
   new IntersectionObserver(([en]) => { visible = en.isIntersecting; if (visible && !raf && !reduce) raf = requestAnimationFrame(frame); }).observe(hero);
   if (!reduce) {
     raf = requestAnimationFrame(frame);
@@ -365,7 +375,14 @@
   };
 
   if ('serviceWorker' in navigator) addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
-  if (standalone) { document.documentElement.classList.add('is-app'); return; }
+  if (standalone) {
+    document.documentElement.classList.add('is-app');
+    const sp = document.getElementById('splash');
+    const done = () => { if (sp) { sp.classList.add('out'); setTimeout(() => sp.remove(), 700); } };
+    if (document.readyState === 'complete') setTimeout(done, 900); else addEventListener('load', () => setTimeout(done, 700));
+    setTimeout(done, 3500);
+    return;
+  }
 
   const sheet = $('#install'), body = $('#install-body');
   let deferred = null;

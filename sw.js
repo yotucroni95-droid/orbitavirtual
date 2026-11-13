@@ -1,12 +1,12 @@
 /* App da Órbita Virtual: guarda o site no celular para abrir rápido e funcionar com internet fraca.
    Ao mudar arquivos do site, aumente a versão abaixo para o app baixar a novidade. */
-const VERSION = 'orbita-v1';
+const VERSION = 'orbita-v2';
 const CORE = [
   './',
   'index.html',
-  'styles.css?v=20261113-orbita6',
-  'content.js?v=20261113-orbita6',
-  'script.js?v=20261113-orbita6',
+  'styles.css?v=20261113-orbita7',
+  'content.js?v=20261113-orbita7',
+  'script.js?v=20261113-orbita7',
   'assets/logo.svg',
   'assets/app/icon-192.png',
   'assets/app/icon-512.png'
